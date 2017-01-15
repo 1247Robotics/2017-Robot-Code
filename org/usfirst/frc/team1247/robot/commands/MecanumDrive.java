@@ -1,13 +1,8 @@
 package org.usfirst.frc.team1247.robot.commands;
 
-import org.usfirst.frc.team1247.robot.OI;
-import org.usfirst.frc.team1247.robot.RobotMap;
-
 public class MecanumDrive extends BaseCommand{
-	private double throttle;
-	
 	public MecanumDrive() {
-		System.out.println("TankDrive initialization");
+		System.out.println("Mecanum initialization");
 		//DUNNO IF WE NEED THROTTLE
 		//throttle = 1.0;
 		
@@ -17,7 +12,7 @@ public class MecanumDrive extends BaseCommand{
 	@Override
 	protected void execute() {
 		//throttle = Math.abs(oi.getZThrottle());
-		
+		//System.out.println("Send Drive?");
 		driveTrain.mecanumDrive(oi.getLeftXAxis(),
 								oi.getLeftYAxis(),
 								oi.getRightXAxis());
@@ -27,6 +22,7 @@ public class MecanumDrive extends BaseCommand{
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		super.initialize();
+		//System.out.println("Can I even??");
 	}
 
 	@Override

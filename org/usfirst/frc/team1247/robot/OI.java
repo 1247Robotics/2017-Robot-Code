@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1247.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 
 
 /**
@@ -13,13 +12,15 @@ public class OI {
 	
 //------------------------------Controller Type--------------------------------------
 	public OI () {
+		System.out.println("I can has OI!");
 		xboxDriveJoystick = new Joystick(RobotMap.XBOX_DRIVE_ID);
 	}
+
 	
 //------------------------------Axis-------------------------------------------------
 	public double getLeftXAxis() {
 		double axisValue = 0;
-		
+		//System.out.println("Left Axis!");
 		axisValue = xboxDriveJoystick.getRawAxis(RobotMap.XBOX_LEFT_XAXIS_ID);
 		return axisValue;
 	}

@@ -8,12 +8,13 @@ package org.usfirst.frc.team1247.robot;
  */
 public class RobotMap {
 	// Magic numbers go here!
-	public static final int XBOX_DRIVE_ID = 1;
+	public static final int XBOX_DRIVE_ID = 5;
 	// ------------------------TALONS------------------------------------------
-	public static final int TALON_CHANNEL_FRONT_LEFT = 1; 
+	public static final int TALON_CHANNEL_FRONT_LEFT = 0; 
+	public static final int TALON_CHANNEL_REAR_LEFT = 1;
 	public static final int TALON_CHANNEL_FRONT_RIGHT = 2; 
 	public static final int TALON_CHANNEL_REAR_RIGHT = 3; 
-	public static final int TALON_CHANNEL_REAR_LEFT = 4; 
+	
 	
 	//-----------------------DRIVE---------------------------------------------
 	public static final int XBOX_LEFT_XAXIS_ID = 0;

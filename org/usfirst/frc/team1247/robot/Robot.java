@@ -1,10 +1,10 @@
 
 package org.usfirst.frc.team1247.robot;
 
+import org.usfirst.frc.team1247.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1247.robot.commands.BaseCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -20,7 +20,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	public static OI oi;
-	//AutonomousMode autonomousMode;
+	AutonomousMode autonomousMode;
+	
+	final String defaultAuto = "Default";
+	final String customAuto = "My Auto";
+	String autoSelected;
+	SendableChooser<String> chooser = new SendableChooser<>();
+	
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -28,9 +35,19 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		chooser.addDefault("Default Auto", defaultAuto);
+		chooser.addObject("My Auto", customAuto);
+		SmartDashboard.putData("Auto choices", chooser);
+		
+		System.out.println("Robot Init!");
+		
 		oi = new OI();
 		BaseCommand.init();
-		//autonomousMode = new AutonomousMode();
+		autonomousMode = new AutonomousMode();
+	}
+	
+	@Override
+	public void robotPeriodic(){
 	}
 
 	/**
@@ -46,7 +63,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		//autonmousMode.start();
+		autonomousMode.start();
 	}
 
 	/**
@@ -55,11 +72,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println("Do I has autonomous periodic even?");
 	}
 
 	@Override
 	public void teleopInit() {
-		//if (autonomousMode != null) autonomousMode.cancel();
+		if (autonomousMode != null) autonomousMode.cancel();
 	}
 
 	/**
@@ -73,8 +91,9 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
 		LiveWindow.run();
+		Scheduler.getInstance().run();
+		System.out.println("Do I has teleop periodic even?");
 	}
 
 	/**
@@ -85,4 +104,5 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
 	}
+	
 }

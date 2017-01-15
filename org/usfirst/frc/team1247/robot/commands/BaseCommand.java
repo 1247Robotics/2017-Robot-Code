@@ -17,6 +17,7 @@ public abstract class BaseCommand extends Command {
 		super();
 		//System.out.println("BaseCommand initialization");
 		
+		
 	}
 	
 	public BaseCommand(double timeout) {

@@ -6,16 +6,16 @@ import org.usfirst.frc.team1247.robot.commands.MecanumDrive;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
+//import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class DriveTrain extends Subsystem{
 	private Talon talonFrontLeft, talonFrontRight, talonRearLeft, talonRearRight;
 	
 	private RobotDrive drive;
-	private Gyro gyro;
+	//private Gyro gyro;
 	
 	public DriveTrain() {
-		//System.out.println("DriveTrain initialization");
+		System.out.println("DriveTrain initialization");
 		talonFrontLeft = new Talon(RobotMap.TALON_CHANNEL_FRONT_LEFT);
 		talonRearLeft = new Talon(RobotMap.TALON_CHANNEL_REAR_LEFT);
 		talonFrontRight = new Talon(RobotMap.TALON_CHANNEL_FRONT_RIGHT);
@@ -31,10 +31,12 @@ public class DriveTrain extends Subsystem{
 	
 	@Override
 	public void initDefaultCommand() {
-		new MecanumDrive();
+		setDefaultCommand(new MecanumDrive());
 	}
 	
 	public void mecanumDrive(double leftx, double lefty, double rightx){
-		drive.mecanumDrive_Cartesian(leftx, lefty, rightx, gyro.getAngle());
+		//drive.mecanumDrive_Cartesian(leftx, lefty, rightx, gyro.getAngle());
+		///System.out.println("DRIVE!");
+		drive.mecanumDrive_Polar(leftx, lefty, rightx);
 	}
 }
