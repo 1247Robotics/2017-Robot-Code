@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team1247.robot;
 
 import org.usfirst.frc.team1247.robot.commands.AutonomousMode;
