@@ -4,6 +4,7 @@ import org.usfirst.frc.team1247.robot.RobotMap;
 import org.usfirst.frc.team1247.robot.commands.MecanumDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -26,6 +27,8 @@ public class DriveTrain extends Subsystem{
 		//LiveWindow.addActuator("right","talonRight", talonRight);
 		
 		drive = new RobotDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
+		drive.setInvertedMotor(MotorType.kFrontRight, true);
+		drive.setInvertedMotor(MotorType.kRearRight, true);
 		drive.setSafetyEnabled(false);
 	}
 	
@@ -35,8 +38,8 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public void mecanumDrive(double leftx, double lefty, double rightx){
-		//drive.mecanumDrive_Cartesian(leftx, lefty, rightx, gyro.getAngle());
+		drive.mecanumDrive_Cartesian(leftx, lefty, rightx, 0);
 		///System.out.println("DRIVE!");
-		drive.mecanumDrive_Polar(leftx, lefty, rightx);
+		//drive.mecanumDrive_Polar(leftx, lefty, rightx);
 	}
 }

@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println("Do I has autonomous periodic even?");
+		//System.out.println("Do I has autonomous periodic even?");
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		LiveWindow.run();
 		Scheduler.getInstance().run();
-		System.out.println("Do I has teleop periodic even?");
+		//System.out.println("Do I has teleop periodic even?");
 	}
 
 	/**
