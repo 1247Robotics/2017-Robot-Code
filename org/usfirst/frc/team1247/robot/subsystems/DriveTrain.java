@@ -16,7 +16,7 @@ public class DriveTrain extends Subsystem{
 	//private Gyro gyro;
 	
 	public DriveTrain() {
-		System.out.println("DriveTrain initialization");
+		System.out.println("DriveTrain initialization...Did I un-Gage the code??");
 		talonFrontLeft = new Talon(RobotMap.TALON_CHANNEL_FRONT_LEFT);
 		talonRearLeft = new Talon(RobotMap.TALON_CHANNEL_REAR_LEFT);
 		talonFrontRight = new Talon(RobotMap.TALON_CHANNEL_FRONT_RIGHT);

@@ -6,7 +6,7 @@ public class MecanumDrive extends BaseCommand{
 	public MecanumDrive() {
 		System.out.println("Mecanum initialization");
 		//DUNNO IF WE NEED THROTTLE
-		throttle = 0.5;
+		throttle = .5;
 		
 		requires(driveTrain);
 	}

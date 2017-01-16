@@ -1,9 +1,11 @@
 package org.usfirst.frc.team1247.robot;
 
+import org.usfirst.frc.team1247.robot.utilities.*;
 import org.usfirst.frc.team1247.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1247.robot.commands.BaseCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -20,12 +22,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	public static OI oi;
 	AutonomousMode autonomousMode;
+    ADIS16448_IMU imu;
 	
 	final String defaultAuto = "Default";
 	final String customAuto = "My Auto";
 	String autoSelected;
 	SendableChooser<String> chooser = new SendableChooser<>();
-	
+
 	
 
 	/**
@@ -36,17 +39,34 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("My Auto", customAuto);
-		SmartDashboard.putData("Auto choices", chooser);
-		
+		SmartDashboard.putData("Auto choices", chooser);		
 		System.out.println("Robot Init!");
 		
 		oi = new OI();
 		BaseCommand.init();
 		autonomousMode = new AutonomousMode();
+        imu = new ADIS16448_IMU();
+        //System.out.println(imu.getAngleX());
+        //System.out.println(imu.getAngleY());
+        //System.out.println(imu.getAngleZ());
 	}
 	
 	@Override
 	public void robotPeriodic(){
+        //System.out.println(imu.getAngleX());
+        //System.out.println(imu.getAngleY());
+        //System.out.println(imu.getAngleZ());
+		SmartDashboard.putData("ADIS", imu);
+        SmartDashboard.putNumber("AngleX", imu.getAngleX());
+        SmartDashboard.getNumber("AngleY", imu.getAngleY());
+        SmartDashboard.getNumber("AngleZ", imu.getAngleZ());
+        SmartDashboard.putNumber("AccelX", imu.getAccelX());
+        SmartDashboard.putNumber("AccelY", imu.getAccelY());
+        SmartDashboard.putNumber("AccelZ", imu.getAccelZ());
+        SmartDashboard.getNumber("MagX", imu.getMagX());
+        SmartDashboard.getNumber("MagY", imu.getMagY());
+        SmartDashboard.getNumber("MagZ", imu.getMagZ());
+        Timer.delay(0.005);		// wait for a motor update time
 	}
 
 	/**
@@ -94,6 +114,13 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		//System.out.println("Do I has teleop periodic even?");
 	}
+	
+	 public void operatorControl() {
+	        while (isOperatorControl() && isEnabled()) {
+	            SmartDashboard.putData("IMU", imu);
+	            Timer.delay(0.005);		// wait for a motor update time
+	        }
+	    }
 
 	/**
 	 * This function is called periodically during test mode
