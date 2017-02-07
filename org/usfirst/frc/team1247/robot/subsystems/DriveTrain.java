@@ -25,10 +25,9 @@ public class DriveTrain extends Subsystem{
 		
 		//LiveWindow.addActuator("left","talonLeft", talonLeft);
 		//LiveWindow.addActuator("right","talonRight", talonRight);
-		
 		drive = new RobotDrive(talonFrontLeft, talonRearLeft, talonFrontRight, talonRearRight);
 		drive.setInvertedMotor(MotorType.kFrontRight, true);
-		drive.setInvertedMotor(MotorType.kRearRight, true);
+		//drive.setInvertedMotor(MotorType.kRearRight, true);
 		drive.setSafetyEnabled(false);
 	}
 	
@@ -37,8 +36,8 @@ public class DriveTrain extends Subsystem{
 		setDefaultCommand(new MecanumDrive());
 	}
 	
-	public void mecanumDrive(double leftx, double lefty, double rightx){
-		drive.mecanumDrive_Cartesian(leftx, lefty, rightx, 0);
+	public void mecanumDrive(double leftx, double lefty, double rightx, int angle){
+		drive.mecanumDrive_Cartesian(leftx, lefty, rightx, angle);
 		///System.out.println("DRIVE!");
 		//drive.mecanumDrive_Polar(leftx, lefty, rightx);
 	}

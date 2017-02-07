@@ -3,7 +3,7 @@ package org.usfirst.frc.team1247.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 
 public class AutonomousDrive extends BaseCommand{
-	private double speedX, speedY, rotation, duration;
+		private double speedX, speedY, rotation, duration;
 	
 	private boolean isDriving, isFinished;
 	
@@ -24,18 +24,18 @@ public class AutonomousDrive extends BaseCommand{
 		requires(driveTrain);
 	}
 	
-	//public AutonomousDrive(double speed, double duration) {
-		//this.speedX = speed;
-		//this.speedY = speed;
-		//this.rotation = speed;
-		//this.duration = duration;
+		public AutonomousDrive(double speed, double duration) {
+			this.speedX = speed;
+			this.speedY = speed;
+			this.rotation = speed;
+			this.duration = duration;
 		
-		//isDriving = isFinished = false;
+		isDriving = isFinished = false;
 		
-		//timer = new Timer();
+		timer = new Timer();
 		
-		//requires(driveTrain);
-	//}
+		requires(driveTrain);
+	}
 	
 	@Override
 	protected void initialize() {
@@ -49,7 +49,7 @@ public class AutonomousDrive extends BaseCommand{
 			isDriving = true;
 		}
 		
-		if (timer.get() < duration) driveTrain.mecanumDrive(0, 0, 1);
+		if (timer.get() < duration) driveTrain.mecanumDrive(0, 0, 1, 0);
 		else isFinished = true;
 	}
 

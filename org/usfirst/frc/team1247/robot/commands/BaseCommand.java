@@ -2,6 +2,8 @@ package org.usfirst.frc.team1247.robot.commands;
 
 import org.usfirst.frc.team1247.robot.OI;
 import org.usfirst.frc.team1247.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1247.robot.subsystems.PixyDuino;
+import org.usfirst.frc.team1247.robot.subsystems.RopePull;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,7 +12,10 @@ public abstract class BaseCommand extends Command {
 	public static OI oi;
 	
 	//create subsystems.
+	
 	public static DriveTrain driveTrain;
+	public static PixyDuino pixyDuino;
+	//public static RopePull ropePull;
 	
 	
 	public BaseCommand() {
@@ -40,6 +45,10 @@ public abstract class BaseCommand extends Command {
 		
 		//Initialize subsystems.
 		driveTrain = new DriveTrain();
+		
+		pixyDuino = new PixyDuino();
+		
+		//ropePull = new RopePull();
 		
 		//displays stuff on smartdashboard
 		SmartDashboard.putData(driveTrain);
